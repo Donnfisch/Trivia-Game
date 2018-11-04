@@ -169,13 +169,13 @@ var GameObj = {
         } 
     },
 
-    rightImg:function (correctImg) {
+    rightImg:function (randomItem) {
         var imageArray = ["assets/images/c1.gif","assets/images/c2.gif","assets/images/c3.gif",
         "assets/images/c4.gif","assets/images/c5.gif","assets/images/c6.gif","assets/images/c7.gif",
         "assets/images/c8.gif","assets/images/c9.gif","assets/images/c10.gif","assets/images/c11.gif",
         "assets/images/c12.gif",];
 
-        var randomItem = imgeaArray[Math.floor(Math.random()*imageArray.length)];
+        randomItem = imgeaArray[Math.floor(Math.random()*imageArray.length)];
         console.log(randomItem);
     },
 
@@ -216,7 +216,7 @@ var GameObj = {
             else if ($(this).val() == randomQ.correctAnswer) {
                 var $pickedAnswer = GameObj.validateAnswer($(this).val());
                 $("#answer").html("<h1 class='timeRemaining'>Correct!"+"</h1>"
-                    + '<img class="startGameImg"+ "rightA">');
+                + '<img class="startGameImg" src="assets/images/c1.gif">');
                 $("#choices, #displayQuestion").html("");
                 GameObj.correctAnswers++;
                 GameObj.checktotalQuestions();
