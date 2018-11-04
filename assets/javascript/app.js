@@ -169,15 +169,6 @@ var GameObj = {
         } 
     },
 
-    rightImg:function (randomItem) {
-        var imageArray = ["assets/images/c1.gif","assets/images/c2.gif","assets/images/c3.gif",
-        "assets/images/c4.gif","assets/images/c5.gif","assets/images/c6.gif","assets/images/c7.gif",
-        "assets/images/c8.gif","assets/images/c9.gif","assets/images/c10.gif","assets/images/c11.gif",
-        "assets/images/c12.gif",];
-
-        randomItem = imgeaArray[Math.floor(Math.random()*imageArray.length)];
-        console.log(randomItem);
-    },
 
     timeRemaining: function (secs) {  
         if (secs <= 5) {
@@ -245,8 +236,8 @@ var GameObj = {
         $("#content, #buttons, #displayTimer, #displayQuesiton, #answer, #showResults").html("");
         $("#startAgain").hide();
         $("#startGame").on("click", function () {
-            $("#startContent, #buttons, #showResults").html("");
-            GameObj.loadQuestion();          
+        $("#startContent, #buttons, #showResults").html("");
+        GameObj.loadQuestion();          
         });
     }
 }
