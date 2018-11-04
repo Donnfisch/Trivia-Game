@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+    align-content: center;
+}
+
+body { 
+    background: url("../images/Background.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+h1 {
+    line-height: 1.5;
+} 
+#wrapper {
+    text-align: center;
+}
+
+#header-title {
+    font-family: 'EB Garamond';
+    font-size: 60px;
+    font-weight: bolder;
+    color: rgb(247, 190, 93);
+    padding: 0px 10px;
+    margin-top: 30px;
+    margin-bottom: 60px;
+    text-shadow:3px 1px 2px black;
+ }
+
+.startBtn {
+    color: #4d00ff;
+    font-size: 36px;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 40px;
+    box-shadow: 2px 2px 5px black;
+ }
+
+ .startBtn:hover {
+     opacity: .75;
+     color: #ffd900;
+ }
+
+ .startGameImg {
+     width: 300px;
+     overflow: hidden;
+     box-shadow: 2px 2px 5px black;
+ }
+
+ .timeRemaining {
+     font-weight: 1.5rem;
+     font-family: 'EB Garamond';
+     color: rgb(247, 190, 93);
+     text-shadow: 2px 2px 5px black;
+     margin: 10px 0px 30px;
+ }
+
+ .timeRemainingRed {
+    font-family: 'EB Garamond';
+    color: rgb(247, 190, 93);
+    font-weight: 1.5rem;
+    text-shadow: 2px 2px 5px black;
+    margin: 10px 0px 30px;
+ }
+
+
+ .QA {
+    font-family: 'EB Garamond';
+    color: rgb(247, 190, 93);
+    font-weight: 2rem;
+    text-shadow: 2px 2px 5px black;
+    margin: 10px 0px 10px;
+}
+
+.choiceBtn {
+    height: 60px;
+    background-color: #313131;
+    border: solid 1px black;
+    margin: 15px 0px 10px;
+    font-family: 'EB Garamond';
+    color: rgb(247, 190, 93);
+    font-size: 25px;
+}
+
+.choiceBtn:hover {
+   opacity: 0.75;
+   background-color:black;
+   color: #ffd900;
+   height: 60px;
+}
+
+
+
+ 
