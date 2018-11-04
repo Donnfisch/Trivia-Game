@@ -132,10 +132,10 @@ var GameObj = {
     showResults: function () {
         clearTimeout(timer);
         $("#answer").html("<h1 class='QA'>Completed! Results Below<br />" 
-                        + "Correct Answers: " + GameObj.correctAnswers
-                        + "<br />Incorrect Answers: " + GameObj.incorrectAnswers
-                        + "<br />Unanswers: " + GameObj.unAnswers
-                        + "</h1>");
+        + "Correct Answers: " + GameObj.correctAnswers
+        + "<br />Incorrect Answers: " + GameObj.incorrectAnswers
+        + "<br />Unanswers: " + GameObj.unAnswers
+        + "</h1>");                
         $("#displayTimer").html("");
         $("#startAgain").show();
         $("#startAgain").on("click", function () {
@@ -169,7 +169,6 @@ var GameObj = {
         } 
     },
 
-
     timeRemaining: function (secs) {  
         if (secs <= 5) {
             $("#displayTimer").html("<h2 class='timeRemainingRed'>Time Remaining: " + secs +"s</h2>");
@@ -190,6 +189,13 @@ var GameObj = {
             $("#choices, #displayQuestion").html("");
             GameObj.checktotalQuestions();
         }
+
+        var imageArray = ['<img class="startGameImg" src="assets/images/c1.gif">','<img class="startGameImg" src="assets/images/c2.gif">','<img class="startGameImg" src="assets/images/c3.gif">',
+        '<img class="startGameImg" src="assets/images/c4.gif">','<img class="startGameImg" src="assets/images/c5.gif">','<img class="startGameImg" src="assets/images/c6.gif">','<img class="startGameImg" src="assets/images/c7.gif">',
+        '<img class="startGameImg" src="assets/images/c8.gif">','<img class="startGameImg" src="assets/images/c9.gif">','<img class="startGameImg" src="assets/images/c10.gif">','<img class="startGameImg" src="assets/images/c11.gif">',
+        '<img class="startGameImg" src="assets/images/c12.gif">'];
+        
+        var randomItem = imageArray[Math.floor(Math.random()*imageArray.length)];
  
         $("#choices").off("click");
         
@@ -207,7 +213,9 @@ var GameObj = {
             else if ($(this).val() == randomQ.correctAnswer) {
                 var $pickedAnswer = GameObj.validateAnswer($(this).val());
                 $("#answer").html("<h1 class='timeRemaining'>Correct!"+"</h1>"
-                + '<img class="startGameImg" src="assets/images/c1.gif">');
+                +"<h1 class='QA'>Correct Answer: " + $pickedAnswer + "</h1>"
+                + randomItem
+                + "</h1>");
                 $("#choices, #displayQuestion").html("");
                 GameObj.correctAnswers++;
                 GameObj.checktotalQuestions();
@@ -215,7 +223,6 @@ var GameObj = {
         });
     },
 
-    
     loadQuestion: function () {
         randomQ = GameObj.triviaQA[Math.floor(Math.random()*GameObj.triviaQA.length)];
         $("#displayQuestion").html("<h1 class='QA'>"+randomQ.Question+"</h1>");
@@ -231,8 +238,7 @@ var GameObj = {
         GameObj.timeRemaining(GameObj.time);
     },
 
-   
-    startGame: function () {
+   startGame: function () {
         $("#content, #buttons, #displayTimer, #displayQuesiton, #answer, #showResults").html("");
         $("#startAgain").hide();
         $("#startGame").on("click", function () {
