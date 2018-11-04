@@ -1,4 +1,3 @@
-//Game Object
 var GameObj = {
     correctAnswers: 0,
     incorrectAnswers: 0,
@@ -116,9 +115,7 @@ var GameObj = {
         },
         correctAnswer: "b"
     }],
-    
 
-    //Reset all variables and timer for new game
     reset: function () {
         GameObj.correctAnswers= 0;
         GameObj.incorrectAnswers= 0;
@@ -132,7 +129,6 @@ var GameObj = {
         GameObj.loadQuestion();
     },
 
-    //showResults function is called when totalQuestions equals 10
     showResults: function () {
         clearTimeout(timer);
         $("#answer").html("<h1 class='QA'>Completed! Results Below<br />" 
@@ -146,17 +142,13 @@ var GameObj = {
             GameObj.reset();
         })
     },
-    
 
-    //Each time user submit an answer will invoke validateAnswer function
     validateAnswer: function (result) {
         for (result in randomQ.Answers) {
-            //if time's up and correct answer click
             if (result == randomQ.correctAnswer) {
                 GameObj.totalQuestions++;
                 return randomQ.Answers[result];
             }
-            //Incorrect answer click
             else {
                 result = randomQ.correctAnswer;
                 GameObj.totalQuestions++;
@@ -165,7 +157,6 @@ var GameObj = {
         }
     },
 
-    //Function to check whether totalQuestions is up to show results
     checktotalQuestions: function () {
         if (GameObj.totalQuestions == 10) {
             GameObj.showResults();
@@ -178,7 +169,16 @@ var GameObj = {
         } 
     },
 
-    //Timing count down function
+    rightImg:function (correctImg) {
+        var imageArray = ["assets/images/c1.gif","assets/images/c2.gif","assets/images/c3.gif",
+        "assets/images/c4.gif","assets/images/c5.gif","assets/images/c6.gif","assets/images/c7.gif",
+        "assets/images/c8.gif","assets/images/c9.gif","assets/images/c10.gif","assets/images/c11.gif",
+        "assets/images/c12.gif",];
+
+        var randomItem = imgeaArray[Math.floor(Math.random()*imageArray.length)];
+        console.log(randomItem);
+    },
+
     timeRemaining: function (secs) {  
         if (secs <= 5) {
             $("#displayTimer").html("<h2 class='timeRemainingRed'>Time Remaining: " + secs +"s</h2>");
@@ -188,7 +188,6 @@ var GameObj = {
         }
         secs--;
         timer = setTimeout('GameObj.timeRemaining(' + secs + ')', 1000);
-
         if (secs < 0) {
             clearTimeout(timer);
             var result = GameObj.validateAnswer(randomQ.correctAnswer);
@@ -200,11 +199,9 @@ var GameObj = {
             $("#choices, #displayQuestion").html("");
             GameObj.checktotalQuestions();
         }
-        
-                
-        //User answer
+ 
         $("#choices").off("click");
-        //Incorrect Answer Clicked
+        
         $("#choices").on("click", ".choiceBtn", function () {
             if ($(this).val() != randomQ.correctAnswer) {
                 var $pickedAnswer = GameObj.validateAnswer($(this).val());
@@ -216,11 +213,10 @@ var GameObj = {
                 GameObj.incorrectAnswers++;
                 GameObj.checktotalQuestions();
             }
-            //Correct Answer Clicked
             else if ($(this).val() == randomQ.correctAnswer) {
                 var $pickedAnswer = GameObj.validateAnswer($(this).val());
                 $("#answer").html("<h1 class='timeRemaining'>Correct!"+"</h1>"
-                    + '<img class="startGameImg" src="assets/images/correct.jpg">');
+                    + '<img class="startGameImg"+ "rightA">');
                 $("#choices, #displayQuestion").html("");
                 GameObj.correctAnswers++;
                 GameObj.checktotalQuestions();
@@ -228,7 +224,7 @@ var GameObj = {
         });
     },
 
-    //Random loadQuestion when user click start game
+    
     loadQuestion: function () {
         randomQ = GameObj.triviaQA[Math.floor(Math.random()*GameObj.triviaQA.length)];
         $("#displayQuestion").html("<h1 class='QA'>"+randomQ.Question+"</h1>");
@@ -244,13 +240,11 @@ var GameObj = {
         GameObj.timeRemaining(GameObj.time);
     },
 
-    //startGame fucntion
+   
     startGame: function () {
         $("#content, #buttons, #displayTimer, #displayQuesiton, #answer, #showResults").html("");
         $("#startAgain").hide();
-        //Click to start game
         $("#startGame").on("click", function () {
-            //Hide startGameImg and startGame button
             $("#startContent, #buttons, #showResults").html("");
             GameObj.loadQuestion();          
         });
